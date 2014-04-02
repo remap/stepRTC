@@ -23,7 +23,7 @@ https://uclalabchat.appspot.com/?r=55361618
 and then somewhere else, load
 https://uclalabchat.appspot.com/?r=55361618
 
-that will always work. 
+that (or any other session ID in same format) will always work. 
 
 
 notes
