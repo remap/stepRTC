@@ -31,4 +31,6 @@ notes
 
 it will only allow 2 clients at a single URL. 
 
+Works with / across either Firefox or Chrome. 
+
 currently runs on google app engine. We will eventually make our own that runs anywhere; but until then, here is a working system.
