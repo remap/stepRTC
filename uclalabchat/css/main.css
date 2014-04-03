@@ -47,8 +47,8 @@ footer {
 }
 #mini {
   position: absolute;
-  height: 30%;
-  width: 30%;
+  height: 20%;
+  width: 20%;
   bottom: 32px;
   right: 4px;
   opacity: 1.0;
@@ -56,12 +56,13 @@ footer {
   -webkit-transform: scale(-1, 1);
 }
 #localVideo {
-  width: 100%;
-  height: 100%;
+  width: 50%;
+  height: 50%;
   opacity: 0;
   -webkit-transition-property: opacity;
   -webkit-transition-duration: 2s;
 }
+
 #remoteVideo {
   width: 100%;
   height: 100%;

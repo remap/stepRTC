@@ -472,7 +472,8 @@ function transitionToDone() {
 }
 
 function enterFullScreen() {
-  container.webkitRequestFullScreen();
+  //container.webkitRequestFullScreen();
+  c.webkitRequestFullScreen()
 }
 
 function noteIceCandidate(location, type) {
