@@ -21,7 +21,7 @@ Usage Notes
 
 publisher can be Firefox, but the active canvas page works best in Chrome. 
 
-note that you can also just 'hardcode' a single URL, and it will work - do not need to re-generate every seession. 
+note that you can also just 'hardcode' a single URL, and it will work - do not need to re-generate every seession.
 
 it will only allow 2 clients at a single URL. 
 
@@ -36,3 +36,5 @@ currently runs on google app engine - we will eventually make our own codebase. 
 The codebase is a modified version of the google/mozilla collab webrtc example (http://goo.gl/tbJXto) - modified, specifically, to include remove video preview on a canvas element.
 
 Also note you can run this locally (via localhost:8080) if you install googleappengine launcher, import the code, and hit 'run'.
+
+
