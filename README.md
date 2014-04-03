@@ -33,7 +33,7 @@ Codebase Notes:
 
 currently runs on google app engine - we will eventually make our own codebase. Meanwhile, this works to begin client-side iteration. just draw on global variable 'canvas' (as defined in canvas.js)
 
-The codebase is a modified version of the google/mozilla collab webrtc example (http://goo.gl/tbJXto) - modified, specifically, to include remove video preview on a canvas element.
+The codebase is a modified version of the google/mozilla collab webrtc example (http://goo.gl/tbJXto) - modified, specifically, to include remote video preview on a canvas element.
 
 Also note you can run this locally (via localhost:8080) if you install googleappengine launcher, import the code, and hit 'run'.
 
