@@ -3,6 +3,10 @@ stepRTC
 
 Web RTC for STEP project w/ Inquirium
 
+nano@remap.ucla.edu
+
+Allows realtime video streaming in a browser in a canvas element to faciliate overlaying sprites onto live preview of the space. A sort of 'webRTC / OpenPtrack' Augmented Reality. 
+
 
 Usage Instructions
 ==================
@@ -19,21 +23,21 @@ then, double-click on the 'preview' window, and it will go full-screen.
 Usage Notes
 ===========
 
-publisher can be Firefox, but the active canvas page works best in Chrome. 
+Publisher can be Firefox, but the active canvas page works best in Chrome. 
 
-note that you can also just 'hardcode' a single URL, and it will work - do not need to re-generate every seession.
+Note that you can also just 'hardcode' a single URL, and it will work - do not need to re-generate every seession.
 
-it will only allow 2 clients at a single URL. 
+App will only allow 2 clients at a single URL. 
 
-your screen's aspect ratio must match the webcam's aspect for this to look good. If this is not possible, we can modify this manually. 
+Your screen's aspect ratio must match the webcam's aspect for this to look good. If this is not possible, we can modify this manually. 
 
 
 Codebase Notes:
 ===============
 
-currently runs on google app engine - we will eventually make our own codebase. Meanwhile, this works to begin client-side iteration. just draw on global variable 'canvas' (as defined in canvas.js)
+Currently runs on google app engine - we will eventually make our own codebase. Meanwhile, this works to begin client-side iteration. just draw on global variable 'canvas' (as defined in canvas.js)
 
-The codebase is a modified version of the google/mozilla collab webrtc example (http://goo.gl/tbJXto) - modified, specifically, to include remove video preview on a canvas element.
+The codebase is a modified version of the google/mozilla collab webrtc example (http://goo.gl/tbJXto) - modified, specifically, to include remote video preview on a canvas element. Primary modifications are in canvas.css & canvas.js, index.html, and minor modifiations to main.css. 
 
 Also note you can run this locally (via localhost:8080) if you install googleappengine launcher, import the code, and hit 'run'.
 
