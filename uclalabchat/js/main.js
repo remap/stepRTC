@@ -35,8 +35,9 @@ function initialize() {
   card = document.getElementById('card');
   
   localVideo = document.getElementById('localVideo');
+  console.log('localvideo: ' + localVideo);
   // Reset localVideo display to center.
-  if localVideo != null {
+  if (localVideo != null) {
       localVideo.addEventListener('loadedmetadata', function(){
         window.onresize();});
     }; 
@@ -51,8 +52,9 @@ function initialize() {
   // Caller is always ready to create peerConnection.
   signalingReady = initiator;
 
-  if (mediaConstraints.audio === false &&
-      mediaConstraints.video === false) {
+  if (( mediaConstraints.audio === false &&
+      mediaConstraints.video === false ) ||  
+      localVideo == null) {
     hasLocalStream = false;
     maybeStart();
   } else {
@@ -449,7 +451,7 @@ function transitionToActive() {
     setTimeout(function() { localVideo.src = ''; }, 500);
     setTimeout(function() { miniVideo.style.opacity = 1; }, 1000);
   }
-  if (removeVideo != null) { 
+  if (remoteVideo != null) { 
     remoteVideo.style.opacity = 1;
   }
   card.style.webkitTransform = 'rotateY(180deg)';
@@ -474,7 +476,7 @@ function transitionToDone() {
   if (localVideo != null) { 
     localVideo.style.opacity = 0;
   }
-  if (removeVideo != null) {
+  if (remoteVideo != null) {
     remoteVideo.style.opacity = 0;
  }
   if (miniVideo != null) {
@@ -521,8 +523,8 @@ function updateInfoDiv() {
     div.innerHTML += '<p style="background-color: red; color: yellow;">' +
                      infoDivErrors[msg] + '</p>';
   }
-  if (infoDivErrors.length)
-    showInfoDiv();
+  //if (infoDivErrors.length)
+    // showInfoDiv();      // jb commented out
 }
 
 function toggleInfoDiv() {
@@ -755,9 +757,9 @@ window.onbeforeunload = function() {
 // Set the video diplaying in the center of window.
 window.onresize = function(){
   var aspectRatio;
-  if (remoteVideo.style.opacity === '1') {
+  if (remoteVideo != null && remoteVideo.style.opacity === '1') {
     aspectRatio = remoteVideo.videoWidth/remoteVideo.videoHeight;
-  } else if (localVideo.style.opacity === '1') {
+  } else if (localVideo !=null && localVideo.style.opacity === '1') {
     aspectRatio = localVideo.videoWidth/localVideo.videoHeight;
   } else {
     return;

@@ -450,7 +450,7 @@ class MainPage(webapp2.RequestHandler):
 
     
     room_link = base_url + '?rec=1&r=' + room_key
-    room_link = append_url_arguments(self.request, room_link)
+    # not needed?? room_link = append_url_arguments(self.request, room_link)
     token = create_channel(room, user, token_timeout)
     pc_config = make_pc_config(stun_server, turn_server, ts_pwd)
     pc_constraints = make_pc_constraints(dtls, dscp, ipv6)
