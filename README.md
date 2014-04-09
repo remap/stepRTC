@@ -1,44 +1,51 @@
 stepRTC
 =======
 
-Web RTC for STEP project w/ Inquirium
+Initial WebRTC Demo for STEP project w/ Inquirium
 
-nano@remap.ucla.edu
+nano@remap.ucla.edu / jburke@remap.ucla.edu
 
-Allows realtime video streaming in a browser in a canvas element to faciliate overlaying sprites onto live preview of the space. A sort of 'webRTC / OpenPtrack' Augmented Reality. 
+Demonstrates realtime video streaming from browser-to-browser from a local camera to a canvas element in a remote browser.
 
+This example has a publisher - publish.html and a receiver - receive.html. 
 
 Usage Instructions
 ==================
 
-visit http://uclalabchat.appspot.com in Google Chrome
+1. Use either Chrome or Firefox for both the publisher and receiver but do not mix for now. 
 
-you will get a URL to share
+2. First, connect to the publisher without a room number:
 
-visit that URL on a different computer, and it will share A/V p2p via webRTC. 
+http://uclalabchat.appspot.com/?pub=1
 
-then, double-click on the 'preview' window, and it will go full-screen.
+This will redirect to a URL with a unique room number, such as:
 
+https://uclalabchat.appspot.com/?r=57639312&pub=1
+
+3. Then, in another tab or on another machine, connect to the corresponding receiver by copying over that URL and changing 'pub' to 'rec' in the URL but leaving the room number the same:
+
+https://uclalabchat.appspot.com/?r=57639312&rec=1
 
 Usage Notes
 ===========
 
-Publisher can be Firefox, but the active canvas page works best in Chrome. 
-
 Note that you can also just 'hardcode' a single URL, and it will work - do not need to re-generate every seession.
 
-App will only allow 2 clients at a single URL. 
+The current application will only allow 2 clients at a single URL. 
 
-Your screen's aspect ratio must match the webcam's aspect for this to look good. If this is not possible, we can modify this manually. 
+Your screen's aspect ratio must match the webcam's aspect for this to look good in the current version. 
 
+To Run Locally
+==============
+
+You can run the server locally (via localhost:8080) if you install googleappengine launcher, import the code, and hit 'run'.
 
 Codebase Notes:
 ===============
 
-Currently runs on google app engine - we will eventually make our own codebase. Meanwhile, this works to begin client-side iteration. just draw on global variable 'canvas' (as defined in canvas.js)
+Currently runs on google app engine - we will eventually remove this dependency. Meanwhile, this works to begin client-side iteration. just draw on global variable 'canvas' (as defined in canvas.js)
 
-The codebase is a modified version of the google/mozilla collab webrtc example (http://goo.gl/tbJXto) - modified, specifically, to include remote video preview on a canvas element. Primary modifications are in canvas.css & canvas.js, index.html, and minor modifiations to main.css. 
+The codebase is a hacked version of the google/mozilla collab webrtc example (http://goo.gl/tbJXto) - modified, specifically, to include remote video preview on a canvas element and split publisher and receiver functions. 
 
-Also note you can run this locally (via localhost:8080) if you install googleappengine launcher, import the code, and hit 'run'.
 
 
