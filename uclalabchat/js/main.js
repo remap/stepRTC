@@ -33,10 +33,13 @@ function initialize() {
 
   console.log('Initializing; room=' + roomKey + '.');
   card = document.getElementById('card');
+  
   localVideo = document.getElementById('localVideo');
   // Reset localVideo display to center.
-  localVideo.addEventListener('loadedmetadata', function(){
-    window.onresize();});
+  if localVideo != null {
+      localVideo.addEventListener('loadedmetadata', function(){
+        window.onresize();});
+    }; 
   miniVideo = document.getElementById('miniVideo');
   remoteVideo = document.getElementById('remoteVideo');
   resetStatus();
@@ -441,11 +444,15 @@ function waitForRemoteVideo() {
 }
 
 function transitionToActive() {
-  reattachMediaStream(miniVideo, localVideo);
-  remoteVideo.style.opacity = 1;
+  if (miniVideo != null && localVideo != null) {
+    reattachMediaStream(miniVideo, localVideo);
+    setTimeout(function() { localVideo.src = ''; }, 500);
+    setTimeout(function() { miniVideo.style.opacity = 1; }, 1000);
+  }
+  if (removeVideo != null) { 
+    remoteVideo.style.opacity = 1;
+  }
   card.style.webkitTransform = 'rotateY(180deg)';
-  setTimeout(function() { localVideo.src = ''; }, 500);
-  setTimeout(function() { miniVideo.style.opacity = 1; }, 1000);
   // Reset window display according to the asperio of remote video.
   window.onresize();
   setStatus('<input type=\'button\' id=\'hangup\' value=\'Hang up\' \
@@ -464,9 +471,15 @@ function transitionToWaiting() {
 }
 
 function transitionToDone() {
-  localVideo.style.opacity = 0;
-  remoteVideo.style.opacity = 0;
-  miniVideo.style.opacity = 0;
+  if (localVideo != null) { 
+    localVideo.style.opacity = 0;
+  }
+  if (removeVideo != null) {
+    remoteVideo.style.opacity = 0;
+ }
+  if (miniVideo != null) {
+    miniVideo.style.opacity = 0;
+  }
   setStatus('You have left the call. <a href=' + roomLink + '>\
             Click here</a> to rejoin.');
 }

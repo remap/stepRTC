@@ -400,6 +400,13 @@ class MainPage(webapp2.RequestHandler):
       # Always create a new room for the unit tests.
       room_key = generate_random(8)
 
+    if self.request.get('pub'):
+        publish = True
+        receive = False
+    if self.request.get('rec'):
+        receive = True 
+        publish = False
+        
     if not room_key:
       room_key = generate_random(8)
       redirect = '/?r=' + room_key
@@ -441,7 +448,8 @@ class MainPage(webapp2.RequestHandler):
       turn_url = 'https://computeengineondemand.appspot.com/'
       turn_url = turn_url + 'turn?' + 'username=' + user + '&key=4080218913'
 
-    room_link = base_url + '?r=' + room_key
+    
+    room_link = base_url + '?rec=1&r=' + room_key
     room_link = append_url_arguments(self.request, room_link)
     token = create_channel(room, user, token_timeout)
     pc_config = make_pc_config(stun_server, turn_server, ts_pwd)
@@ -453,6 +461,8 @@ class MainPage(webapp2.RequestHandler):
                        'me': user,
                        'room_key': room_key,
                        'room_link': room_link,
+                       'publish' : publish,
+                       'receive' : receive, 
                        'initiator': initiator,
                        'pc_config': json.dumps(pc_config),
                        'pc_constraints': json.dumps(pc_constraints),
@@ -465,6 +475,10 @@ class MainPage(webapp2.RequestHandler):
                       }
     if unittest:
       target_page = 'test/test_' + unittest + '.html'
+    elif publish:
+      target_page = 'publish.html'
+    elif receive:
+      target_page = 'receive.html'
     else:
       target_page = 'index.html'
 
