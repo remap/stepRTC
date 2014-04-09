@@ -12,9 +12,9 @@ This example has a publisher - publish.html and a receiver - receive.html.
 Usage Instructions
 ==================
 
-1. Use either Chrome or Firefox for both the publisher and receiver but do not mix for now. 
+Use either Chrome or Firefox for both the publisher and receiver but do not mix for now. 
 
-2. First, connect to the publisher without a room number:
+First, connect to the publisher without a room number:
 
 http://uclalabchat.appspot.com/?pub=1
 
@@ -22,7 +22,7 @@ This will redirect to a URL with a unique room number, such as:
 
 https://uclalabchat.appspot.com/?r=57639312&pub=1
 
-3. Then, in another tab or on another machine, connect to the corresponding receiver by copying over that URL and changing 'pub' to 'rec' in the URL but leaving the room number the same:
+Then, in another tab or on another machine, connect to the corresponding receiver by copying over that URL and changing 'pub' to 'rec' in the URL but leaving the room number the same:
 
 https://uclalabchat.appspot.com/?r=57639312&rec=1
 
