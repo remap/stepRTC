@@ -78,8 +78,9 @@ function initFullScreen() {
   var button = document.getElementById("fullscreen");
   button.addEventListener('click', function(event) {
     //var elem = document.getElementById("videos");
-	var elem = document.getElementById('remote' + gSocketId)
+	//var elem = document.getElementById('remote' + gSocketId)
     //show full screen
+	var elem = document.getElementById("c");
     elem.webkitRequestFullScreen();
   });
 }

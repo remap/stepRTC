@@ -32,6 +32,10 @@ app.get('/script.js', function(req, res) {
   res.sendfile(__dirname + '/script.js');
 });
 
+app.get('/canvas.js', function(req, res) {
+  res.sendfile(__dirname + '/canvas.js');
+});
+
 app.get('/webrtc.io.js', function(req, res) {
   res.sendfile(__dirname + '/webrtc.io.js');
 });

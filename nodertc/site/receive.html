@@ -1,35 +1,43 @@
 <html>
   <head>
-    <title>Publish LAN Video</title>
+    <title>Receive LAN Video</title>
     <link type="text/css" href="/style.css" rel="stylesheet"></link>
 
     <script src="/webrtc.io.js"></script>
+	
 	<script>
 	// hide local video when it shows up 
-	
-	//if document.getElementById("remote")
 	function makeSureLocalIsInvisible(){
 		if(gSocketId){
+			initCanvas();
 		//if(document.getElementById("you")){
 			//console.log("publisher: socketId is "+gSocketId);
 			//removeVideo(gSocketId)
 			//document.getElementById(domId);
 			document.getElementById("you").style.visibility="hidden";
+			remoteVid = document.getElementById('remote' + gSocketId);
+			remoteVid.style.visibility="hidden";
 			//clearInterval(hideit) //turning off, during debugging
 			console.log("receiver: cleared local video");
 		}
-		
-		
 	}
-	
-	
 	//hide it 
 	var hideit = setInterval(makeSureLocalIsInvisible,250);
+	
+	// instantiate canvas
+	if(gSocketId){
+		console.log("publisher: socketId is "+gSocketId);
+		removeVideo(gSocketId)
+		//clearInterval(hideit) //turning off, during debugging
+		console.log("publisher: cleared remote video");
+	}
 	
 	</script>
 	
   </head>
   <body onload="init()">
+	 
+	  	<canvas id="c"></canvas>
     <div id="videos">
       <video id="you" class="flip" autoplay width="320" height="240" style="position: absolute; left: 0px; bottom: 0px;"></video>
     </div>
@@ -40,4 +48,8 @@
     
     <script src="/script.js"></script>
   </body>
+  <footer>
+	    <script src="/canvas.js"></script>
+  </footer>
+
 </html>
