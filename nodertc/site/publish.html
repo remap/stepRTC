@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <title>Publish LAN Video</title>
+    <link type="text/css" href="/style.css" rel="stylesheet"></link>
+
+    <script src="/webrtc.io.js"></script>
+	<script>
+	// hide remote video when it shows up 
+	
+	//if document.getElementById("remote")
+	function makeSureRemoteIsInvisible(){
+		if(gSocketId){
+			console.log("publisher: socketId is "+gSocketId);
+			removeVideo(gSocketId)
+			//clearInterval(hideit) //turning off, during debugging
+			console.log("publisher: cleared remote video");
+		}
+		
+		
+	}
+	
+	
+	//hide it 
+	var hideit = setInterval(makeSureRemoteIsInvisible,250);
+	
+	</script>
+	
+  </head>
+  <body onload="init()">
+    <div id="videos">
+      <video id="you" class="flip" autoplay width="320" height="240" style="position: absolute; left: 0px; bottom: 0px;"></video>
+    </div>
+    
+    <script src="/script.js"></script>
+  </body>
+</html>
