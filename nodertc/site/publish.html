@@ -7,20 +7,15 @@
 	<script>
 	// hide remote video when it shows up 
 	
-	//if document.getElementById("remote")
 	function makeSureRemoteIsInvisible(){
 		if(gSocketId){
-			console.log("publisher: socketId is "+gSocketId);
 			removeVideo(gSocketId)
-			//clearInterval(hideit) //turning off, during debugging
-			console.log("publisher: cleared remote video");
+			clearInterval(hideit) //turning off, during debugging
 		}
 		
 		
 	}
-	
-	
-	//hide it 
+	// poll until video disappears
 	var hideit = setInterval(makeSureRemoteIsInvisible,250);
 	
 	</script>

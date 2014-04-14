@@ -1,18 +1,25 @@
-#webrtc.io-demo
+#step-nodeRTC
 ==============
 
-You can have a look at the [demo](http://webrtc.dennis.is/)
 
-##Instructions on how to setup the demo:
+Second WebRTC Demo for STEP project w/ Inquirium
+
+nano@remap.ucla.edu
+
+Demonstrates realtime video streaming from browser-to-browser from a local camera to a canvas element in a remote browser - assuming they're on same LAN - as there is no turn/ice / NAT hole punching.
+
+This example has a seperate publisher and a receiver.
+
+##Instructions on how to use
 
 Run in your terminal
 
 ```bash 
-git clone git@github.com:webRTC/webrtc.io-demo.git
+git clone [our repo]
 ```
 
 ```bash 
-cd webrtc.io-demo
+cd stepRTC/nodertc
 ```
 
 ```bash 
@@ -27,22 +34,40 @@ cd site
 node server.js
 ```
 
-In a version of Chrome that have webRTC support.
+In a version of Chrome that have webRTC support:
 
-go to [localhost:8080](http://localhost:8080)
+publisher:
 
-click allow to see your camera
+go to [localhost:8080](http://localhost:8080/publish)
 
-go to [localhost:8080](http://localhost:8080)
+click allow to see your camera... 
 
-click allow to see your camera and the connection will be made between your to open windows.
+it's now publishing. 
+
+receiver:
+
+go to [<publisher IP>:8080](http://<publisher IP>:8080/receive)
+
+click allow to see your camera; it's now receiving. 
+
+then double click the video in the browser to go full screen w/ canvas element. 
+
+at this point, you can kill the node process - the browsers will now communicate directly. 
 
 
-##For instructions on how to start developing with webRTC.io
+##Version Notes
 
-go to [https://github.com/webRTC/webRTC.io](https://github.com/webRTC/webRTC.io) and read the instructions.
 
-Developed by:
-    [@dennismatensson](https://github.com/dennismartensson)
-    [@cavedweller](https://github.com/cavedweller)
-    [@sarenji](https://github.com/sarenji)
+Your screen's aspect ratio must match the webcam's aspect for this to look good in the current version. If this is an issue, hardcode the width/height of 'c' element in style.css.
+
+
+##Codebase Notes:
+
+
+uses webRTC.io - a wrapper for webrtc signaling in node.js
+[https://github.com/webRTC/webRTC.io](https://github.com/webRTC/webRTC.io)
+
+view codebase borrows heavily from  [demo](http://webrtc.dennis.is/)
+modified, specifically, to include remote video preview on a canvas element and split publisher and receiver functions. 
+
+

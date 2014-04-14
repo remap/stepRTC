@@ -10,25 +10,20 @@
 	function makeSureLocalIsInvisible(){
 		if(gSocketId){
 			initCanvas();
-		//if(document.getElementById("you")){
-			//console.log("publisher: socketId is "+gSocketId);
-			//removeVideo(gSocketId)
-			//document.getElementById(domId);
 			document.getElementById("you").style.visibility="hidden";
 			remoteVid = document.getElementById('remote' + gSocketId);
 			remoteVid.style.visibility="hidden";
-			//clearInterval(hideit) //turning off, during debugging
 			console.log("receiver: cleared local video");
 		}
 	}
-	//hide it 
-	var hideit = setInterval(makeSureLocalIsInvisible,250);
+	// poll until video disappears
+	var hideit = setInterval(makeSureLocalIsInvisible,25);
 	
 	// instantiate canvas
 	if(gSocketId){
 		console.log("publisher: socketId is "+gSocketId);
 		removeVideo(gSocketId)
-		//clearInterval(hideit) //turning off, during debugging
+		clearInterval(hideit)
 		console.log("publisher: cleared remote video");
 	}
 	
@@ -37,15 +32,13 @@
   </head>
   <body onload="init()">
 	 
-	  	<canvas id="c"></canvas>
+	 <canvas id="c" ondblclick="this.webkitRequestFullScreen()">"></canvas>
+	 
     <div id="videos">
       <video id="you" class="flip" autoplay width="320" height="240" style="position: absolute; left: 0px; bottom: 0px;"></video>
     </div>
 
-    <div class="buttonBox">
-      <div id="fullscreen" class="button">Enter Full Screen</div>
-    </div>
-    
+	
     <script src="/script.js"></script>
   </body>
   <footer>
