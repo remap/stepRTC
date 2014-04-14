@@ -46,7 +46,7 @@ it's now publishing.
 
 receiver:
 
-go to [<publisher IP>:8080](http://<publisher IP>:8080/receive)
+go to <publisher IP>:8080
 
 click allow to see your camera; it's now receiving. 
 
