@@ -13,18 +13,16 @@
 			document.getElementById("you").style.visibility="hidden";
 			remoteVid = document.getElementById('remote' + gSocketId);
 			remoteVid.style.visibility="hidden";
-			console.log("receiver: cleared local video");
 		}
 	}
 	// poll until video disappears
-	var hideit = setInterval(makeSureLocalIsInvisible,25);
+	var hideit = setInterval(makeSureLocalIsInvisible,200);
 	
 	// instantiate canvas
 	if(gSocketId){
-		console.log("publisher: socketId is "+gSocketId);
 		removeVideo(gSocketId)
-		clearInterval(hideit)
-		console.log("publisher: cleared remote video");
+		//clearInterval(hideit)  // this works - but if either side re-refreshes browser, the local will appear in remote. 
+		// as it's not a huge performance hit, I'm not going to clear interval.
 	}
 	
 	</script>

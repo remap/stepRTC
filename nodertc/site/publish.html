@@ -10,13 +10,14 @@
 	function makeSureRemoteIsInvisible(){
 		if(gSocketId){
 			removeVideo(gSocketId)
-			clearInterval(hideit) //turning off, during debugging
+			//clearInterval(hideit)  // this works - but if either side re-refreshes browser, the local will appear in remote. 
+			// as it's not a huge performance hit, I'm not going to clear interval.
 		}
 		
 		
 	}
 	// poll until video disappears
-	var hideit = setInterval(makeSureRemoteIsInvisible,250);
+	var hideit = setInterval(makeSureRemoteIsInvisible,200);
 	
 	</script>
 	
