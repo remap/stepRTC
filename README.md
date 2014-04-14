@@ -15,7 +15,7 @@ This example has a seperate publisher and a receiver.
 Run in your terminal
 
 ```bash 
-git clone [our repo]
+git clone https://github.com/remap/stepRTC
 ```
 
 ```bash 
