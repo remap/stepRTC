@@ -1,51 +1,73 @@
-stepRTC
-=======
-
-Initial WebRTC Demo for STEP project w/ Inquirium
-
-nano@remap.ucla.edu / jburke@remap.ucla.edu
-
-Demonstrates realtime video streaming from browser-to-browser from a local camera to a canvas element in a remote browser.
-
-This example has a publisher - publish.html and a receiver - receive.html. 
-
-Usage Instructions
-==================
-
-Use either Chrome or Firefox for both the publisher and receiver but do not mix for now. 
-
-First, connect to the publisher without a room number:
-
-http://uclalabchat.appspot.com/?pub=1
-
-This will redirect to a URL with a unique room number, such as:
-
-https://uclalabchat.appspot.com/?r=57639312&pub=1
-
-Then, in another tab or on another machine, connect to the corresponding receiver by copying over that URL and changing 'pub' to 'rec' in the URL but leaving the room number the same:
-
-https://uclalabchat.appspot.com/?r=57639312&rec=1
-
-Usage Notes
-===========
-
-Note that you can also just 'hardcode' a single URL, and it will work - do not need to re-generate every seession.
-
-The current application will only allow 2 clients at a single URL. 
-
-Your screen's aspect ratio must match the webcam's aspect for this to look good in the current version. 
-
-To Run Locally
+#step-nodeRTC
 ==============
 
-You can run the server locally (via localhost:8080) if you install googleappengine launcher, import the code, and hit 'run'.
 
-Codebase Notes:
-===============
+Second WebRTC Demo for STEP project w/ Inquirium
 
-Currently runs on google app engine - we will eventually remove this dependency. Meanwhile, this works to begin client-side iteration. just draw on global variable 'canvas' (as defined in canvas.js)
+nano@remap.ucla.edu
 
-The codebase is a hacked version of the google/mozilla collab webrtc example (http://goo.gl/tbJXto) - modified, specifically, to include remote video preview on a canvas element and split publisher and receiver functions. 
+Demonstrates realtime video streaming from browser-to-browser from a local camera to a canvas element in a remote browser - assuming they're on same LAN - as there is no turn/ice / NAT hole punching.
 
+This example has a seperate publisher and a receiver.
+
+##Instructions on how to use
+
+Run in your terminal
+
+```bash 
+git clone [our repo]
+```
+
+```bash 
+cd stepRTC/nodertc
+```
+
+```bash 
+npm install
+```
+
+```bash 
+cd site
+```
+
+```bash 
+node server.js
+```
+
+In a version of Chrome that have webRTC support:
+
+publisher:
+
+go to [localhost:8080](http://localhost:8080/publish)
+
+click allow to see your camera... 
+
+it's now publishing. 
+
+receiver:
+
+go to [<publisher IP>:8080](http://<publisher IP>:8080/receive)
+
+click allow to see your camera; it's now receiving. 
+
+then double click the video in the browser to go full screen w/ canvas element. 
+
+at this point, you can kill the node process - the browsers will now communicate directly. 
+
+
+##Version Notes
+
+
+Your screen's aspect ratio must match the webcam's aspect for this to look good in the current version. If this is an issue, hardcode the width/height of 'c' element in style.css.
+
+
+##Codebase Notes:
+
+
+uses webRTC.io - a wrapper for webrtc signaling in node.js
+[https://github.com/webRTC/webRTC.io](https://github.com/webRTC/webRTC.io)
+
+view codebase borrows heavily from  [demo](http://webrtc.dennis.is/)
+modified, specifically, to include remote video preview on a canvas element and split publisher and receiver functions. 
 
 
