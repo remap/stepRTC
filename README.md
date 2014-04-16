@@ -38,7 +38,7 @@ In a version of Chrome that have webRTC support:
 
 publisher:
 
-go to [localhost:8080](http://localhost:8080/publish)
+go to [localhost:8080/publish](http://localhost:8080/publish)
 
 click allow to see your camera... 
 
@@ -46,7 +46,7 @@ it's now publishing.
 
 receiver:
 
-go to publisher IP:8080
+go to publisher IP:8080/receive
 
 click allow to see your camera; it's now receiving. 
 
